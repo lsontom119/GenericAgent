@@ -42,6 +42,7 @@ class TMWebDriver:
         self.sessions, self.results, self.acks = {}, {}, {}
         self.default_session_id = None  
         self.latest_session_id = None  
+        # Note: connect_ex returns 0 on success, meaning a server is already running
         self.is_remote = socket.socket().connect_ex((host, port+1)) == 0
         if not self.is_remote:  
             self.start_ws_server()  
@@ -64,5 +65,4 @@ class TMWebDriver:
             session = self.sessions[session_id]
             if session.disconnect_at is not None and session.type != 'http': session.reconnect(queue.Queue(), session_info)
             session.disconnect_at = None
-            if session.type == 'http': msgQ = session.http_queue
-            else: return json.dumps({"id": "", "ret": "use
+            if session.type == 'http': m
