@@ -57,12 +57,11 @@ class TMWebDriver:
         def long_poll():
             data = request.json
             session_id = data.get('sessionId')  
+            # TODO: consider stripping query params from url before storing in session_info
             session_info = {'url': data.get('url'), 'title': data.get('title', ''), 'type': 'http'}  
             if session_id not in self.sessions: 
                 session = Session(session_id, session_info, queue.Queue())
                 print(f"Browser http connected: {session.url} (Session: {session_id})")  
                 self.sessions[session_id] = session
             session = self.sessions[session_id]
-            if session.disconnect_at is not None and session.type != 'http': session.reconnect(queue.Queue(), session_info)
-            session.disconnect_at = None
-            if session.type == 'http': m
+            if session.disconnect_at is not None and session.type != 'http': session.reconnect(queue.Queue(), session_in
