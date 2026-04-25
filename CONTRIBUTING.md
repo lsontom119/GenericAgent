@@ -48,3 +48,7 @@ If your skill only makes sense for a specific workflow, it's a marketplace candi
 > This is my personal fork for learning and experimentation. I'm not actively submitting PRs upstream — changes here may not meet the strict review bar above.
 >
 > **Current focus:** exploring custom skill development and understanding the core agent loop. Tracking notes in `NOTES.md` (gitignored).
+>
+> **Skills I'm experimenting with:**
+> - A local file summarization skill (reads files, returns a condensed summary)
+> - A simple task queue skill for chaining multi-step jobs
